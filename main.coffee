@@ -9,6 +9,20 @@ button.onclick = ->
   start()
 document.body.appendChild button
 
+img = document.createElement "img"
+img.src = "https://danielx.whimsy.space/lelly/monster-giants/guy.png"
+
+bg = document.createElement "img"
+bg.src = "https://danielx.whimsy.space/lelly/monster-giants/toot.png"
+
+monsters = [1, 2, 3, 4, 5].map (i) ->
+  monsterImg = document.createElement "img"
+  monsterImg.src = "https://danielx.whimsy.space/lelly/monster-giants/monster#{i}.png"
+
+  return monsterImg
+
+{min, max} = Math
+
 start = ->
   audio = document.createElement "audio"
   audio.setAttribute "autoplay", ""
@@ -17,7 +31,8 @@ start = ->
   
   canvas = document.createElement "canvas"
   document.body.appendChild canvas
-  
+
+  {width, height} = canvas
   context = canvas.getContext('2d')
   
   gradient = context.createLinearGradient(0, 0, canvas.width, 0)
@@ -28,20 +43,36 @@ start = ->
   gradient.addColorStop(4 / 6, 'blue')
   gradient.addColorStop(5 / 6, 'indigo')
   gradient.addColorStop(1, 'violet')
-  
-  img = document.createElement "img"
-  img.src = "https://danielx.whimsy.space/lelly/monster-giants/guy.png"
-  
+
+  gradient2 = context.createLinearGradient(0, 0, 0, canvas.height)
+  gradient2.addColorStop(0, 'blue')
+  gradient2.addColorStop(0.5, 'blue')
+  gradient2.addColorStop(0.5, 'green')
+  gradient2.addColorStop(1, 'green')
+
+  drawMonster = (monster, i) ->
+    x = (width / 2) * i / monsters.length
+    y = max(height - (t - 2) * 20, height / 2)
+    context.drawImage(monster, x, y)
+
   draw = ->
-    {width, height} = canvas
-    context.fillStyle = gradient
-    context.fillRect(0, 0, width, height)
-  
-    context.drawImage(img, ((width - img.width) / 2)|0, ((height - img.height)/ 2)|0)
-  
+    if t < 2
+      context.fillStyle = gradient
+      context.fillRect(0, 0, width, height)
+      context.drawImage(img, ((width - img.width) / 2)|0, ((height - img.height)/ 2)|0)
+    else
+      context.fillStyle = gradient2
+      context.fillRect(0, 0, width, height)
+      monsters.forEach drawMonster
+
+  t = 0
+  dt = 1 / 60
   step = ->
     window.requestAnimationFrame step
-  
+
     draw()
-  
+    t += dt
+
   step()
+  
+  
