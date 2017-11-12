@@ -35,8 +35,12 @@ start = ->
   audio.src = "https://danielx.whimsy.space/lelly/monster-giants/welcome.wav"
 
   audio.onended = ->
-    audio.onended = undefined
     audio.src = "https://danielx.whimsy.space/lelly/monster-giants/da da da.wav"
+
+    audio.onended = ->
+      audio.onended = undefined
+      audio.setAttribute "loop", ""
+      audio.src = "https://danielx.whimsy.space/lelly/monster-giants/theme.mp3"
 
   document.body.appendChild(audio)
 
@@ -65,7 +69,7 @@ start = ->
     x = (width / 2) * i / monsters.length
     y = max(height - (t - 2) * 20, height / 2)
     context.drawImage(monster, x, y)
-  
+
   drawGiant = (giant, i) ->
     x = (width / 2) * i / giants.length + width / 2 - 32
     y = max(height - (t - 2) * 20, height / 2)
