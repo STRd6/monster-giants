@@ -21,20 +21,31 @@ monsters = [1, 2, 3, 4, 5].map (i) ->
 
   return monsterImg
 
+giants = [1, 2, 3, 4, 5].map (i) ->
+  giantImg = document.createElement "img"
+  giantImg.src = "https://danielx.whimsy.space/lelly/monster-giants/giant#{i}.png"
+
+  return giantImg
+
 {min, max} = Math
 
 start = ->
   audio = document.createElement "audio"
   audio.setAttribute "autoplay", ""
   audio.src = "https://danielx.whimsy.space/lelly/monster-giants/welcome.wav"
+
+  audio.onended = ->
+    audio.onended = undefined
+    audio.src = "https://danielx.whimsy.space/lelly/monster-giants/da da da.wav"
+
   document.body.appendChild(audio)
-  
+
   canvas = document.createElement "canvas"
   document.body.appendChild canvas
 
   {width, height} = canvas
   context = canvas.getContext('2d')
-  
+
   gradient = context.createLinearGradient(0, 0, canvas.width, 0)
   gradient.addColorStop(0, 'red')
   gradient.addColorStop(1 / 6, 'orange')
@@ -54,6 +65,11 @@ start = ->
     x = (width / 2) * i / monsters.length
     y = max(height - (t - 2) * 20, height / 2)
     context.drawImage(monster, x, y)
+  
+  drawGiant = (giant, i) ->
+    x = (width / 2) * i / giants.length + width / 2 - 32
+    y = max(height - (t - 2) * 20, height / 2)
+    context.drawImage(giant, x, y)
 
   draw = ->
     if t < 2
@@ -64,6 +80,7 @@ start = ->
       context.fillStyle = gradient2
       context.fillRect(0, 0, width, height)
       monsters.forEach drawMonster
+      giants.forEach drawGiant
 
   t = 0
   dt = 1 / 60
@@ -74,5 +91,5 @@ start = ->
     t += dt
 
   step()
-  
-  
+
+
