@@ -2,10 +2,21 @@ style = document.createElement "style"
 style.innerHTML = require("./style")
 document.head.appendChild style
 
+audio = null
+
+spiderActive = false
+spiderButton = document.createElement "button"
+spiderButton.textContent = "Spider"
+spiderButton.classList.add "spider"
+spiderButton.onclick = ->
+  spiderActive = true
+  audio.pause()
+
 button = document.createElement "button"
 button.textContent = "▶️"
 button.onclick = ->
   button.remove()
+  document.body.appendChild spiderButton
   start()
 document.body.appendChild button
 
@@ -82,7 +93,6 @@ start = ->
       context.fillRect(0, 0, width, height)
       context.drawImage(img, ((width - img.width) / 2)|0, ((height - img.height)/ 2)|0)
     else
-      debugger
       context.fillStyle = gradient2
       context.fillRect(0, 0, width, height)
       drawGiant giantLeader, 2.5
