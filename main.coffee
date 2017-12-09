@@ -9,23 +9,24 @@ button.onclick = ->
   start()
 document.body.appendChild button
 
-img = document.createElement "img"
-img.src = "https://danielx.whimsy.space/lelly/monster-giants/guy.png"
+createImage = (url) ->
+  _img = document.createElement "img"
+  _img.src = url
 
-bg = document.createElement "img"
-bg.src = "https://danielx.whimsy.space/lelly/monster-giants/toot.png"
+  return _img
+
+img = createImage "https://danielx.whimsy.space/lelly/monster-giants/guy.png"
+bg = createImage "https://danielx.whimsy.space/lelly/monster-giants/toot.png"
 
 monsters = [1, 2, 3, 4, 5].map (i) ->
-  monsterImg = document.createElement "img"
-  monsterImg.src = "https://danielx.whimsy.space/lelly/monster-giants/monster#{i}.png"
+  createImage "https://danielx.whimsy.space/lelly/monster-giants/monster#{i}.png"
 
-  return monsterImg
+monsterLeader = createImage "https://danielx.whimsy.space/lelly/monster-giants/monster-leader.png"
 
 giants = [1, 2, 3, 4, 5].map (i) ->
-  giantImg = document.createElement "img"
-  giantImg.src = "https://danielx.whimsy.space/lelly/monster-giants/giant#{i}.png"
+  createImage "https://danielx.whimsy.space/lelly/monster-giants/giant#{i}.png"
 
-  return giantImg
+giantLeader = createImage "https://danielx.whimsy.space/lelly/monster-giants/giant-leader.png"
 
 {min, max} = Math
 
@@ -81,8 +82,11 @@ start = ->
       context.fillRect(0, 0, width, height)
       context.drawImage(img, ((width - img.width) / 2)|0, ((height - img.height)/ 2)|0)
     else
+      debugger
       context.fillStyle = gradient2
       context.fillRect(0, 0, width, height)
+      drawGiant giantLeader, 2.5
+      drawMonster monsterLeader, 2.5
       monsters.forEach drawMonster
       giants.forEach drawGiant
 
