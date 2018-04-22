@@ -199,7 +199,7 @@
     },
     "style.styl": {
       "path": "style.styl",
-      "content": "html\n  display: flex\n  height: 100%\n\nbody\n  display: flex\n  flex: 1\n  flex-direction: column\n  margin: 0\n\n  > button\n    border-radius: 100px\n    width: 200px\n    height: 200px\n    margin: auto\n\n  > button.spider\n    height: 64px\n    width: 64px\n    margin: 0 auto\n\n  > canvas\n    flex: 0\n    margin: auto\n",
+      "content": "html\n  display: flex\n  height: 100%\n\nbody\n  display: flex\n  flex: 1\n  flex-direction: column\n  margin: 0\n\n  > button\n    border-radius: 100px\n    width: 200px\n    height: 200px\n    margin: auto\n\n  > button.spider\n    height: 64px\n    width: 64px\n    margin: 0 auto\n\n  > canvas\n    flex: 1\n    image-rendering: auto\n    image-rendering: crisp-edges\n    image-rendering: pixelated\n    margin: auto\n    width: 100%",
       "mode": "100644",
       "type": "blob"
     },
@@ -217,7 +217,7 @@
     },
     "style": {
       "path": "style",
-      "content": "module.exports = \"html {\\n  display: flex;\\n  height: 100%;\\n}\\nbody {\\n  display: flex;\\n  flex: 1;\\n  flex-direction: column;\\n  margin: 0;\\n}\\nbody > button {\\n  border-radius: 100px;\\n  width: 200px;\\n  height: 200px;\\n  margin: auto;\\n}\\nbody > button.spider {\\n  height: 64px;\\n  width: 64px;\\n  margin: 0 auto;\\n}\\nbody > canvas {\\n  flex: 0;\\n  margin: auto;\\n}\\n\";",
+      "content": "module.exports = \"html {\\n  display: flex;\\n  height: 100%;\\n}\\nbody {\\n  display: flex;\\n  flex: 1;\\n  flex-direction: column;\\n  margin: 0;\\n}\\nbody > button {\\n  border-radius: 100px;\\n  width: 200px;\\n  height: 200px;\\n  margin: auto;\\n}\\nbody > button.spider {\\n  height: 64px;\\n  width: 64px;\\n  margin: 0 auto;\\n}\\nbody > canvas {\\n  flex: 1;\\n  image-rendering: auto;\\n  image-rendering: crisp-edges;\\n  image-rendering: pixelated;\\n  margin: auto;\\n  width: 100%;\\n}\\n\";",
       "type": "blob"
     },
     "pixie": {
