@@ -202,6 +202,11 @@
       "content": "html\n  display: flex\n  height: 100%\n\nbody\n  display: flex\n  flex: 1\n  flex-direction: column\n  margin: 0\n\n  > button\n    border-radius: 100px\n    width: 200px\n    height: 200px\n    margin: auto\n\n  > button.spider\n    height: 64px\n    width: 64px\n    margin: 0 auto\n\n  > canvas\n    flex: 0\n    margin: auto\n",
       "mode": "100644",
       "type": "blob"
+    },
+    "pixie.cson": {
+      "path": "pixie.cson",
+      "content": "publish:\n  s3:\n    basePath: \"public/danielx.net\"\n",
+      "mode": "100644"
     }
   },
   "distribution": {
@@ -214,12 +219,23 @@
       "path": "style",
       "content": "module.exports = \"html {\\n  display: flex;\\n  height: 100%;\\n}\\nbody {\\n  display: flex;\\n  flex: 1;\\n  flex-direction: column;\\n  margin: 0;\\n}\\nbody > button {\\n  border-radius: 100px;\\n  width: 200px;\\n  height: 200px;\\n  margin: auto;\\n}\\nbody > button.spider {\\n  height: 64px;\\n  width: 64px;\\n  margin: 0 auto;\\n}\\nbody > canvas {\\n  flex: 0;\\n  margin: auto;\\n}\\n\";",
       "type": "blob"
+    },
+    "pixie": {
+      "path": "pixie",
+      "content": "module.exports = {\"publish\":{\"s3\":{\"basePath\":\"public/danielx.net\"}}};",
+      "type": "blob"
     }
   },
   "progenitor": {
     "url": "https://danielx.net/editor/"
   },
-  "config": {},
+  "config": {
+    "publish": {
+      "s3": {
+        "basePath": "public/danielx.net"
+      }
+    }
+  },
   "entryPoint": "main",
   "repository": {
     "branch": "master",
